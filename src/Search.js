@@ -1,4 +1,6 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 class Search extends React.Component {
   constructor(props) {
@@ -15,10 +17,18 @@ class Search extends React.Component {
   }
   render() {
     return (
-      <form onSubmit={this.handleFormSubmitted}>
-        <input type="text" ref={this.textInput} />
-        <input type="submit" />
-      </form>
+      // <form onSubmit={this.handleFormSubmitted}>
+      //   <input type="text" ref={this.textInput} />
+      //   <input type="submit" />
+      // </form>
+
+      <Form onSubmit={this.handleFormSubmitted}>
+        <Form.Control size="lg" type="text" placeholder="City Name?" ref={this.textInput}/>
+        <br />
+        <Button variant="primary" type="submit">
+          Explore!
+        </Button>
+      </Form>
     )
   }
 }

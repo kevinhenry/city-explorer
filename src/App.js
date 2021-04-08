@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import Button from 'button';
 import City from './City.js';
 import Search from './Search.js';
 
@@ -14,6 +15,8 @@ class App extends React.Component {
     this.state = {
       haveWeSearchedYet: false,
       citySearchedFor: '',
+      latOfCity: '',
+      lonOfCity: '',
       // title: '',
       // director: '',
       // fetchData: false
@@ -29,11 +32,15 @@ class App extends React.Component {
 
     // make a request to LocationIQ
     let locationResponseData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${citySearchedFor}&format=json`);
+    let lat = locationResponseData.data[0].lat;
+    let lon = locationResponseData.data[0].lon;
     console.log(locationResponseData);
     this.setState({
       haveWeSearchedYet: true,
       citySearchedFor: citySearchedFor,
-      locationData: locationResponseData.data[0] 
+      locationData: locationResponseData.data[0],
+      latOfCity: lat,
+      lonOfCity: lon, 
     });
   
   // fetchData = async() => {
