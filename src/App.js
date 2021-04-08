@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import City from './City.js';
 import Search from './Search.js';
 
