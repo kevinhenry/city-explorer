@@ -42,7 +42,7 @@ Finish time: __1 am___
 Actual time needed to complete: _4 hours____
 
 
-![How this works](The Web Req Response Cycle.jpg)
+![How this works](https://github.com/kevinhenry/city-explorer/blob/main/src/assets/img/The%20Web%20Req%20Response%20Cycle.jpg)
 
 # Getting Started with Create React App
 
