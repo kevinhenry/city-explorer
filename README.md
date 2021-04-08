@@ -20,16 +20,29 @@
 ## Credit and Collaborations - Tyler
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
-Name of feature: ________________________________
+Name of feature: ___1 Setup_____________________________
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: __2 Hours___
 
-Start time: _____
+Start time: __7 pm___
 
-Finish time: _____
+Finish time: __9 pm___
 
-Actual time needed to complete: _____
+Actual time needed to complete: _1.5 hrs____
 
+
+Name of feature: ___2 Locations_____________________________
+
+Estimate of time needed to complete: __3 Hours___
+
+Start time: __8 pm___
+
+Finish time: __1 am___
+
+Actual time needed to complete: _4 hours____
+
+
+![How this works](img/The Web Req Response Cycle.jpg)
 
 # Getting Started with Create React App
 
