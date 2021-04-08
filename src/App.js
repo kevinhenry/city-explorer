@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import City from './City.js';
 import Search from './Search.js';
 
 import './App.css';
@@ -11,13 +12,30 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      title: '',
-      director: '',
-      fetchData: false
-      // haveWeSearchedYet: false,
-      // citySearchedFor: '',
-    }
+      haveWeSearchedYet: false,
+      citySearchedFor: '',
+      // title: '',
+      // director: '',
+      // fetchData: false
+    };
   }
+
+  handleShowSearch = () => {
+    this.setState({haveWeSearchedYet: false});
+  }
+
+  handleSearch = async(citySearchedFor) => {
+    console.log('searched' , citySearchedFor);
+
+    // make a request to LocationIQ
+    let locationResponseData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${citySearchedFor}&format=json`);
+    console.log(locationResponseData);
+    this.setState({
+      haveWeSearchedYet: true,
+      citySearchedFor: citySearchedFor,
+      locationData: locationResponseData.data[0] 
+    });
+  
   // fetchData = async() => {
   //   console.log('fetching');
   //   // get the data from the API and store it in a variable
@@ -33,22 +51,11 @@ class App extends React.Component {
   //   })
   // }
 
-
-  handleShowSearch = () => {
-    this.setState({haveWeSearchedYet: false});
-  }
-
-  handleSearch = (citySearchedFor) => {
-    console.log('searched' , citySearchedFor);
-    this.setState({
-      haveWeSearchedYet: true,
-      citySearchedFor: citySearchedFor
-    });
   }
   render() {
     return (
       <>
-        <h1 onClick={this.fetchData}>City Explorer</h1>
+        <h1>City Explorer</h1>
         {/* { this.state.fetchData ? 
           (<>
           <h2>{this.state.title}</h2>
@@ -56,7 +63,7 @@ class App extends React.Component {
           </>) 
           : ''} */}
         {this.state.haveWeSearchedYet ?
-          <button onClick={this.handleShowSearch}>Search again</button> :
+          <City handleShowSearch={this.handleShowSearch} cityData={this.state.locationData} /> :
           <Search handleSearch={this.handleSearch} />}
       </>  
     )
