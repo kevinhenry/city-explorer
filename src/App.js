@@ -3,6 +3,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import Button from 'button';
 import City from './City.js';
+// import Error from './error.js';
 import Search from './Search.js';
 
 import './App.css';
@@ -17,6 +18,7 @@ class App extends React.Component {
       citySearchedFor: '',
       latOfCity: '',
       lonOfCity: '',
+      errorCode: '',
       // title: '',
       // director: '',
       // fetchData: false
@@ -34,6 +36,7 @@ class App extends React.Component {
     let locationResponseData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${citySearchedFor}&format=json`);
     let lat = locationResponseData.data[0].lat;
     let lon = locationResponseData.data[0].lon;
+    let errorCode = locationResponseData.status;
     console.log(locationResponseData);
     this.setState({
       haveWeSearchedYet: true,
@@ -41,8 +44,24 @@ class App extends React.Component {
       locationData: locationResponseData.data[0],
       latOfCity: lat,
       lonOfCity: lon, 
+      errorCode: errorCode,
     });
+  }
+  // } catch (err) {
+  //   console.log(error.message);
+  //   this.setState({
+  //     returnsError: true,
+  //     error: err.message,
+  //   });
   
+  handleButtonClick = async () => {
+    let weatherData = await axios.get('http://localhost:3002/weather');
+    console.log(weatherData);
+    this.setState({
+      data: weatherData.data
+    });
+  }
+
   // fetchData = async() => {
   //   console.log('fetching');
   //   // get the data from the API and store it in a variable
@@ -58,7 +77,6 @@ class App extends React.Component {
   //   })
   // }
 
-  }
   render() {
     return (
       <>
