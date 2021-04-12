@@ -1,14 +1,19 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, {useState} from 'react';
+import {Alert, Button} from 'react-bootstrap';
 
-class Error extends React.Component {
-  render() {
+function Error({cityErrMsg, weatherErrMsg}) {
+  const [show, setShow] = useState(true);
+
+  if (show) {
     return (
-      <>
-        <h3>{this.props.displayError}</h3>
-      </>
+      <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+        <Alert.Heading>Error!</Alert.Heading>
+        <p>{cityErrMsg}</p>
+        <p>{weatherErrMsg}</p>
+      </Alert>
     );
   }
+  return <Button onClick={() => setShow(true)}>Display Error Message</Button>;
 }
 
 export default Error;
