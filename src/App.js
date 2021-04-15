@@ -2,10 +2,12 @@ import React from 'react';
 import axios from 'axios';
 import City from './City.js';
 import Error from './error.js';
+import Movie from './movie.js';
 import Search from './Search.js';
 import Weather from './weather.js';
 
 import './App.css';
+// import { response } from 'express';
 
 class App extends React.Component {
 
@@ -62,6 +64,26 @@ class App extends React.Component {
         });
       });
   }
+
+  getMovies = location => {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/movies`, {
+      params: {
+        location: location
+      }
+    })
+      .then(response => {
+        this.setState({
+          movieData: response.data,
+          movieErrMsg: ''
+        });
+      })
+      .catch(error => {
+        this.setState({
+          movieData: '',
+          movieErrMsg: error.message
+        });
+      });
+  }
   
   render() {
     return (
@@ -74,6 +96,8 @@ class App extends React.Component {
         {this.state.cityErrMsg ? <Error cityErrMsg={this.state.cityErrMsg} /> : ''}
         {this.state.weatherData ? <Weather data={this.state.weatherData} /> : ''}
         {this.state.weatherErrMsg ? <Error weatherErrMsg={this.state.weatherErrMsg} /> : ''}
+        {this.state.movieData ? <Movie movies={this.state.movieData} /> : ''}
+        {this.state.movieErrMsg ? <Error movieErrMsg={this.state.movieErrMsg} /> : ''}
       </>  
     )
   }
