@@ -22,7 +22,15 @@ class App extends React.Component {
           citySearchedFor: cityData,
           cityErrMsg: ''
         });
-
+        this.getWeatherData(cityData);
+      })
+      .catch(error => {
+        this.setState({
+          citySearchedFor: '',
+          cityErrMsg: error.message
+        });
+      }); 
+  }
   // handleShowSearch = () => {
   //   this.setState({haveWeSearchedYet: false});
   // }
@@ -34,6 +42,7 @@ class App extends React.Component {
   //   const weatherData = await axios.get(`${process.env.REACT_APP_BACKEND_URL}`);
   // }
 
+  getWeatherData = cityData => {
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/weather`, {
       params: {
         lat: cityData.lat,
@@ -51,15 +60,7 @@ class App extends React.Component {
           weatherData: '',
           weatherErrMsg: error.message
         });
-        console.log(error);
       });
-    })
-    .catch(error => {
-      this.setState({
-        citySearchedFor: '',
-        cityErrMsg: error.message
-      });
-    }); 
   }
   
   render() {
