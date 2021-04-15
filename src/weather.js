@@ -5,7 +5,7 @@ class Weather extends React.Component {
   render() {
     return (
       <>
-        <h2>Forecast</h2>
+        <h1>Forecast</h1>
         {this.props.data.map((eachDay, index) => (
         <li key={index}>
         {eachDay.date}
@@ -13,7 +13,7 @@ class Weather extends React.Component {
         </li>
         ))}
       </>
-    )
+    );
   }
 }
 
