@@ -30,9 +30,9 @@ class App extends React.Component {
   // handleSearch = async(citySearchedFor) => {
   //   console.log('searched' , citySearchedFor);
 
-  getWeatherData = async() => {
-    const weatherData = await axios.get(`${process.env.REACT_APP_BACKEND_URL}`);
-  }
+  // getWeatherData = async() => {
+  //   const weatherData = await axios.get(`${process.env.REACT_APP_BACKEND_URL}`);
+  // }
 
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/weather`, {
       params: {
