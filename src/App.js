@@ -25,6 +25,7 @@ class App extends React.Component {
           cityErrMsg: ''
         });
         this.getWeatherData(cityData);
+        this.getMovies(city);
       })
       .catch(error => {
         this.setState({
@@ -48,7 +49,7 @@ class App extends React.Component {
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/weather`, {
       params: {
         lat: cityData.lat,
-        lon: cityData.lon,
+        lon: cityData.lon
       }
     })
       .then(response => {
