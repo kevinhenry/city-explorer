@@ -9,7 +9,13 @@ class Movie extends React.Component {
         {this.props.movies.map((movie, index) => (
         <li key={index}>
         {movie.title}
-        {movie.released_on}
+        {movie.description}
+        {/* {movie.overview}
+        {movie.average_votes}
+        {movie.total_votes}
+        {movie.image_url}
+        {movie.popularity}
+        {movie.released_on} */}
         </li>
         ))}
       </>
