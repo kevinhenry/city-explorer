@@ -87,6 +87,7 @@ class App extends React.Component {
   }
   
   render() {
+    console.log(this.state);
     return (
       <>
         <h1>City Explorer</h1>    

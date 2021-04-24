@@ -6,6 +6,8 @@ class Weather extends React.Component {
   render() {
     let renderList = this.props.data.map((eachDay, index) => (
       <WeatherDay key={index} date={eachDay.date} description={eachDay.description} />
+    // let renderList = this.props.data.map((eachDay, index) => (
+    //   <WeatherDay key={index} date={eachDay.date} description={eachDay.description} />
     ))
     return (
       <>
